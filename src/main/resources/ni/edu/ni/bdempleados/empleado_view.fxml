@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="ni.edu.ni.bdempleados.controller.EmpleadoController" prefWidth="850" prefHeight="700">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <!-- Form Section -->
+    <GridPane hgap="10" vgap="10">
+        <Label text="Código:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtCodigo" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Nombre:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtNombre" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Correo:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtCorreo" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Cargo:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtCargo" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+        <Label text="Salario:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtSalario" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <!-- CRUD Buttons -->
+    <HBox spacing="10">
+        <Button text="Guardar" onAction="#guardar"/>
+        <Button text="Actualizar" onAction="#actualizar"/>
+        <Button text="Eliminar (Baja)" onAction="#eliminar"/>
+        <Button text="Limpiar Formulario" onAction="#limpiarFormulario"/>
+    </HBox>
+
+    <Separator/>
+
+    <!-- Search Section (3 Filters) -->
+    <VBox spacing="10">
+        <Label text="Búsqueda Avanzada" style="-fx-font-weight: bold;"/>
+        <HBox spacing="10">
+            <ComboBox fx:id="cmbFiltro1" promptText="Columna 1"/>
+            <TextField fx:id="txtBuscar1" promptText="Valor 1"/>
+
+            <ComboBox fx:id="cmbFiltro2" promptText="Columna 2"/>
+            <TextField fx:id="txtBuscar2" promptText="Valor 2"/>
+
+            <ComboBox fx:id="cmbFiltro3" promptText="Columna 3"/>
+            <TextField fx:id="txtBuscar3" promptText="Valor 3"/>
+        </HBox>
+        <HBox spacing="10">
+            <Button text="Buscar" onAction="#buscar"/>
+            <Button text="Quitar Filtros" onAction="#quitarFiltros"/>
+        </HBox>
+    </VBox>
+
+    <!-- TableView -->
+    <TableView fx:id="tablaEmpleados" VBox.vgrow="ALWAYS" onMouseClicked="#seleccionarRegistro">
+        <columns>
+            <TableColumn fx:id="colCodigo" text="Código" prefWidth="100"/>
+            <TableColumn fx:id="colNombre" text="Nombre" prefWidth="200"/>
+            <TableColumn fx:id="colCorreo" text="Correo" prefWidth="200"/>
+            <TableColumn fx:id="colCargo" text="Cargo" prefWidth="150"/>
+            <TableColumn fx:id="colSalario" text="Salario" prefWidth="100"/>
+        </columns>
+    </TableView>
+</VBox>
